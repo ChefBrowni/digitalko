@@ -27,7 +27,7 @@
     </head> 
     <body>
         <?php
-        define("ROW_PER_PAGE",5);
+        define("ROW_PER_PAGE",3);
         require_once('include/db.php');
         ?>
         <?php   
@@ -411,7 +411,7 @@
      
 </tbody>
 <?php
-include "szukit.php";
+//include "szukit.php";
 ?>
 </table>
 <?php echo $per_page_html; ?>

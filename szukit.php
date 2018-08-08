@@ -1,7 +1,7 @@
 <?php
 	error_reporting(E_ALL);
 	$r = [];
-	$conn = new mysqli("localhost", "root", "root", "mete");
+	$conn = new mysqli("localhost", "sandboxdb", "xaweebou", "sandbox");
 	mysqli_set_charset($conn,"utf8");
 	if($conn->connect_error){
 		die("Connection failed: ".$conn->connect_error);
