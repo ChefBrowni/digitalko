@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Gép: localhost
--- Létrehozás ideje: 2018. Aug 03. 12:49
+-- Létrehozás ideje: 2018. Aug 08. 11:12
 -- Kiszolgáló verziója: 5.7.11
--- PHP verzió: 7.0.3
+-- PHP verzió: 5.6.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,24 +33,15 @@ CREATE TABLE `test` (
   `ar` int(11) NOT NULL,
   `gyarto` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
   `kategoria` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
-  `garancia` varchar(50) COLLATE utf8_hungarian_ci NOT NULL,
-  `leiras` text COLLATE utf8_hungarian_ci NOT NULL,
-  `kep` text COLLATE utf8_hungarian_ci NOT NULL,
-  `tomeg` int(11) NOT NULL,
-  `x` int(11) NOT NULL,
-  `y` int(11) NOT NULL,
-  `z` int(11) NOT NULL,
-  `megjegyzes` text COLLATE utf8_hungarian_ci NOT NULL
+  `garancia` varchar(50) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `leiras` text COLLATE utf8_hungarian_ci,
+  `kep` text COLLATE utf8_hungarian_ci,
+  `tomeg` varchar(11) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `x` varchar(11) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `y` varchar(11) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `z` varchar(11) COLLATE utf8_hungarian_ci DEFAULT NULL,
+  `megjegyzes` text COLLATE utf8_hungarian_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci;
-
---
--- A tábla adatainak kiíratása `test`
---
-
-INSERT INTO `test` (`id`, `cikkszam`, `cikknev`, `ar`, `gyarto`, `kategoria`, `garancia`, `leiras`, `kep`, `tomeg`, `x`, `y`, `z`, `megjegyzes`) VALUES
-(87, 21312, 'dsdsadsad', 3131231, 'SONY', 'Autóhifi', 'das', 'sadsa', 'dasdsadas', 432, 432, 432, 43, '2432'),
-(88, 257011, 'ZALMAN ZM-K650WP - vízálló Gamer billentyűzet USB (Eng)', 6101, 'SONY', 'Autóhifi', '24 hónap saját', 'Csatoló felület : Vezetékes – PS/2; Vezetékes – USB; Kiosztás : Angol (US); Extrák : Gamer; Egérrel : Nem', 'http://www.computeremporium.hu/img/cache/1/83/zalman_zm_k650wp.jpeg', 3, 3, 3, 3, '3'),
-(89, 257011, 'ZALMAN ZM-K650WP - vízálló Gamer billentyűzet USB (Eng)', 6101, 'SONY', 'Autóhifi', '24 hónap saját', 'Csatoló felület : Vezetékes – PS/2; Vezetékes – USB; Kiosztás : Angol (US); Extrák : Gamer; Egérrel : Nem', 'http://www.computeremporium.hu/img/cache/1/83/zalman_zm_k650wp.jpeg', 4, 4, 4, 4, '4');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -70,7 +61,7 @@ ALTER TABLE `test`
 -- AUTO_INCREMENT a táblához `test`
 --
 ALTER TABLE `test`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

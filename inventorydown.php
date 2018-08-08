@@ -411,11 +411,10 @@
                      <!---Megjelenítés--->
      
 </tbody>
-<?php
-include "szukit.php";
-?>
 </table>
+</form>    
+<form method="get" action="">
 <?php echo $per_page_html; ?>
-</form>     
+</form> 
 </html>
 </body>
