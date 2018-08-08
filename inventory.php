@@ -222,6 +222,7 @@
                 <?php 
                         if(!empty($result)) 
                         { 
+                            $i = 0;
                             foreach($result as $row) 
                             {
                             $id = $row['id'];
@@ -237,7 +238,7 @@
                             $kepek=$row['kepek'];
                         ?>
                           <tr class='table-row'>
-                          <td><input type="checkbox" class="chkCheckBoxId" value="<?php echo $row['id']; ?>" name="id"/></td>
+                          <td><input type="checkbox" class="chkCheckBoxId" value="<?php echo $row['id']; ?>" name="valami_<? echo $i;?>"/></td>
                           <td name="cikkszam[]" value="cikkszam" id="cikkszam"> <?php echo $row['cikkszam']; ?> </td>
                           <td title="<?php echo $row['gyarto'];?>" id="rov"><?php echo $row['gyarto']; ?></td>
                           <td title="<?php echo $row['cikknev'];?>" id="rov"><?php echo $row['cikknev']; ?></td>
@@ -247,17 +248,17 @@
                           <td title="<?php echo $row['garancia'];?>" id="rov"><?php echo $row['garancia']; ?></td>
                           <td title="<?php echo $row['keszlet'];?>" id="rov"><?php echo $row['keszlet']; ?></td>
                           <td title="<?php echo $row['leiras'];?>" id="rov"> <a target="_blank" href="<?php echo $kepek;?>"><img src="<?php echo $kepek;?>" width="50px" height="50px" alt="X" class="img-responsive"></a></td>
-                          <td id="rov"><textarea name="cikkszam" id="cikkszam" class="form-control"><?php echo $row['cikkszam'];?></textarea></td>
-                          <td><textarea name="cikknev" id="cikknev" class="form-control"><?php echo $row['cikknev'];?></textarea></td>
-                          <td id="rov"><textarea name="garancia" id="garancia" class="form-control"><?php echo $row['garancia'];?></textarea></td>
-                          <td id="rov"><textarea name="tomeg" id="tomeg" class="form-control"></textarea></td>
-                          <td id="rov"><textarea name="x" id="x" class="form-control"></textarea></td>
-                          <td id="rov"><textarea name="y" id="y" class="form-control"></textarea></td>
-                          <td id="rov"><textarea name="z" id="z" class="form-control"></textarea></td>
-                          <td id="rov"><textarea name="megjegyzes" id="megjegyzes" class="form-control"></textarea></td>
-                          <td id="nem"><textarea name="leiras" id="leiras"><?php echo $row['leiras'];?></textarea></td>
-                          <td id="nem"><textarea name="kep" id="kep"><?php echo $row['kepek'];?></textarea></td>
-                          <td id="nem"><textarea name="ar" id="ar"><?php echo $row['ar'];?></textarea></td>
+                          <td id="rov"><textarea name="cikkszam_<? echo $i; ?>" id="cikkszam" class="form-control"><?php echo $row['cikkszam'];?></textarea></td>
+                          <td><textarea name="cikknev_<? echo $i; ?>" id="cikknev" class="form-control"><?php echo $row['cikknev'];?></textarea></td>
+                          <td id="rov"><textarea name="garancia_<? echo $i; ?>" id="garancia" class="form-control"><?php echo $row['garancia'];?></textarea></td>
+                          <td id="rov"><textarea name="tomeg_<? echo $i; ?>" id="tomeg" class="form-control"></textarea></td>
+                          <td id="rov"><textarea name="x_<? echo $i; ?>" id="x" class="form-control"></textarea></td>
+                          <td id="rov"><textarea name="y_<? echo $i; ?>" id="y" class="form-control"></textarea></td>
+                          <td id="rov"><textarea name="z_<? echo $i; ?>" id="z" class="form-control"></textarea></td>
+                          <td id="rov"><textarea name="megjegyzes_<? echo $i; ?>" id="megjegyzes" class="form-control"></textarea></td>
+                          <td id="nem"><textarea name="leiras_<? echo $i; ?>" id="leiras"><?php echo $row['leiras'];?></textarea></td>
+                          <td id="nem"><textarea name="kep_<? echo $i; ?>" id="kep"><?php echo $row['kepek'];?></textarea></td>
+                          <td id="nem"><textarea name="ar_<? echo $i; ?>" id="ar"><?php echo $row['ar'];?></textarea></td>
                           <td id="rov">
                           <select name="kategoria" class="select">
                           <?php
@@ -280,7 +281,7 @@
                           </tr>
 
                      <?php
-
+                     $i++;
                     }
                     }
                     ?>
@@ -288,19 +289,25 @@
                     require "include/db.php";
                     if(isset($_POST['feltolt']))
                     {
-                        $cikkszam = $_POST['cikkszam'];
-                          $cikknev = $_POST["cikknev"];
-                          $ar = $_POST["ar"];
-                          $gyarto = $_POST["gyarto"];
-                           $kategoria = $_POST["kategoria"];
-                           $garancia = $_POST["garancia"];
-                           $leiras = $_POST["leiras"];
-                           $kep = $_POST["kep"];
-                           $tomeg = $_POST["tomeg"];
-                           $x = $_POST["x"];
-                           $y = $_POST["y"];
-                           $z = $_POST["z"];
-                           $megjegyzes = $_POST["megjegyzes"];
+
+                        $osszesen = 0;
+                        for($i=0; $i<20; $i++){
+
+                            if( isset($_POST['valami_'.$i]) ){
+                            
+                        $cikkszam = $_POST['cikkszam_'.$i];
+                          $cikknev = $_POST["cikknev_".$i];
+                          $ar = $_POST["ar_".$i];
+                          $gyarto = $_POST["gyarto_".$i];
+                           $kategoria = $_POST["kategoria_".$i];
+                           $garancia = $_POST["garancia_".$i];
+                           $leiras = $_POST["leiras_".$i];
+                           $kep = $_POST["kep_".$i];
+                           $tomeg = $_POST["tomeg_".$i];
+                           $x = $_POST["x_".$i];
+                           $y = $_POST["y_".$i];
+                           $z = $_POST["z_".$i];
+                           $megjegyzes = $_POST["megjegyzes_".$i];
 
                           $sql = "INSERT INTO test
                             (cikkszam,cikknev,ar,garancia,leiras,kep,tomeg,x,y,z,megjegyzes,kategoria,gyarto)
@@ -326,6 +333,8 @@
                         else 
                         {
                             echo "<H1>TÖLTSD KI MINDET</H1>";
+                        }
+                        }
                         }
                     }
                     //Update Items
@@ -413,7 +422,7 @@
      
 </tbody>
 <?php
-include "szukit.php";
+//include "szukit.php";
 ?>  
 </table>
 <?php echo $per_page_html; ?>
